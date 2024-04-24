@@ -5,6 +5,7 @@ require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const bucketListRoutes = require("./routes/bucketList");
+const itineraryRoutes = require('./routes/itinerary');
 const connectDB = require("./config/db");
 
 connectDB();
@@ -12,12 +13,13 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/bucketList", bucketListRoutes);
 app.use("/api/user", userRoutes);
+app.use('/api/itinerary', itineraryRoutes);
 
 // Server Frontend
 app.use(express.static(path.join(__dirname, "../client/build")));

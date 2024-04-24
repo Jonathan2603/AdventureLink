@@ -1,0 +1,89 @@
+.itinerary-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgb(40,61,80);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 15px 20px -7px;
+  width: 80%;
+  margin: 0 auto;
+  color: wheat;
+
+  h3, h4 {
+    margin-bottom: 20px;
+    color: wheat;
+    font-weight: 900;
+
+  }
+
+  .date-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    label {
+      flex: 1;
+    }
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: wheat;
+    color: white;
+    border-radius: 0.3rem;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #023e8a;
+    }
+  }
+
+  .itinerary-result {
+    margin-top: 20px;
+    background: rgb(40,61,80);
+    padding: 15px;
+    border-radius: 5px;
+    color: white; 
+    text-align: left;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    width: 100%;
+
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      color: wheat;
+    }
+
+    p {
+      margin-top: 0.2em;
+      margin-bottom: 0.2em;
+      color: wheat;
+      font-weight: 700;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-top: 0.2em;
+      margin-bottom: 0.2em;
+    }
+
+    li {
+      margin-bottom: 0.1em;
+    }
+  }
+}

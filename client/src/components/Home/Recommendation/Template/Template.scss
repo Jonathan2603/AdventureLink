@@ -2,7 +2,9 @@
   cursor: pointer;
   border-radius: 20px;
   width: 400px;
-  background-image: linear-gradient(to bottom, #9393ff2b, #e05ee92b);
+  background: aliceblue;
+  opacity: 0.9;
+  color: #283d50;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 15px 20px -7px;
   border: none;
   margin: 20px 0;
@@ -22,7 +24,9 @@
   }
 }
 .template:hover {
-  background-image: linear-gradient(to bottom, #9393ffb0, #e05ee9aa);
+  background: #283d50;
+  opacity: 0.9;
+  color: wheat;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
     rgba(0, 0, 0, 0.05) 0px 5px 10px;
   transform: translateX(0.4rem) translateY(-1rem);

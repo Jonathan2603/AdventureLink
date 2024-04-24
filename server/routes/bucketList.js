@@ -7,7 +7,7 @@ const {
 const { protected } = require("../middleware/auth");
 
 router.get("/", protected, getBucketList);
-router.post("/", protected, addBucketList);
+router.post("/",protected, addBucketList);
 router.delete("/:id", protected, deleteBucketList);
 
 module.exports = router;

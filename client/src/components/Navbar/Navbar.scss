@@ -7,12 +7,12 @@
     box-shadow: rgba(0, 0, 0, 0.238) 1px 1px 2px 0px;
     border-radius: 10px;
     padding: 5px;
-    background-color: aliceblue;
     span {
       padding-top: 15px;
     }
     p {
       font-size: 1.3rem;
+      color: #283d50;
       line-height: 1px;
       font-weight: 700;
       margin-left: 5px;
@@ -31,7 +31,7 @@
 .navbar-nav {
   a {
     font-size: 1.2rem;
-    color: #0077b6;
+    color: #283d50;
     // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 }
@@ -41,7 +41,7 @@
 }
 
 .navbar-nav a:focus {
-  color: #023e8a;
+  color:  #283d50;
   font-weight: 800;
 }
 

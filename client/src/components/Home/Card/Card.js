@@ -10,19 +10,19 @@ const Card = () => {
         <p>Find the best places to visit near you </p>
       </div>
       <div className="card">
-        <i className="fa-solid fa-cloud-sun"></i>
-        <h5>Weather Forecast</h5>
-        <p>Get the latest weather information</p>
+        <i class="fa-solid fa-users"></i>
+        <h5>Connect</h5>
+        <p>Connect with fellow like-minded travellers</p>
       </div>
       <div className="card">
-        <i className="fa-solid fa-radio"></i>
-        <h5>Latest News</h5>
-        <p>Get the latest news and information</p>
+        <i class="fa-solid fa-calendar-days"></i>
+        <h5>Itinerary Generator</h5>
+        <p>Generate an itinerary for your dream destinations</p>
       </div>
       <div className="card">
-        <i className="fa-solid fa-utensils"></i>
-        <h5>Perfect Restaurants</h5>
-        <p>Enjoy the best delicacies in your city</p>
+        <i class="fa-solid fa-clipboard-list"></i>
+        <h5>Personal Bucket List</h5>
+        <p>Plan your adventures with your own bucket list</p>
       </div>
     </div>
   );

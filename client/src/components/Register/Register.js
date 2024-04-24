@@ -8,6 +8,7 @@ import "./Register.scss";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
 
@@ -18,7 +19,11 @@ const Register = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      if (message.includes('Username already exists')) {
+        toast.error("Username already taken. Please choose another.");
+      } else {
+        toast.error(message);
+      }
     }
     if (isSuccess || user) {
       navigate("/");
@@ -29,10 +34,11 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && email && password && bio) {
-      dispatch(userRegister({ name, email, password, bio }));
+    if (name && email && username && password && bio) {
+      dispatch(userRegister({ name, email, username, password, bio }));
       setName("");
       setEmail("");
+      setUsername("");
       setPassword("");
       setBio("");
     } else {
@@ -81,6 +87,19 @@ const Register = () => {
             <div id="emailHelp" className="form-text">
               We'll never share your email with anyone else.
             </div>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label">
+              Username
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
           </div>
           <div className="mb-3">
             <label htmlFor="password" className="form-label">

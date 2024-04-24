@@ -12,12 +12,12 @@ const initialState = {
 };
 
 export const userRegister = createAsyncThunk(
-  "user/userRegister",
-  async ({ name, email, password, bio }, thunkAPI) => {
+  "user/register",
+  async ({ name, email, username, password, bio }, thunkAPI) => {
     try {
       const response = await axios.post(
-        "/api/auth/register",
-        { name, email, password, bio }
+        "http://localhost:4000/api/auth/register",
+        { name, email, username, password, bio },
       );
       if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
@@ -30,6 +30,7 @@ export const userRegister = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString();
+      console.log(error);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -40,7 +41,7 @@ export const userLogin = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       const response = await axios.post(
-        "/api/auth/login",
+        "http://localhost:4000/api/auth/login",
         {
           email,
           password,

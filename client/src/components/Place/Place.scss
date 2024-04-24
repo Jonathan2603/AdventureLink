@@ -3,42 +3,50 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  // padding: 0 20px 30px;
+  width: 100%;
 }
 
 .search {
-  background-image: linear-gradient(to bottom, #9393ff2b, #e05ee92b);
+  background-color: aliceblue;
   display: flex;
   padding: 0.5rem;
-  // margin: 0 20px 20px;
-  border-radius: 0.5rem;
+  border-radius: 40px;
+  border: none;
   width: 500px;
+  margin: 0 auto; // Ensure the search bar is centered
+  justify-content: center;
+
   .container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 2rem;
+    width: 100%;
+    
     input {
       background: transparent;
       border: none;
       text-align: center;
-      color: black;
+      color:  black;
       font-size: 1.3rem;
+      width: 100%;
     }
   }
   button {
     padding: 0.5rem 1rem;
     cursor: pointer;
-    border-radius: 0.3rem;
+    border-radius: 40px;
     border: none;
-    color: white;
-    background-color: #4361ee;
+    background-color: wheat;
+    color: #283d50;
     font-size: 1.1rem;
     text-transform: uppercase;
     transition: 0.3s ease-in-out;
+    margin-left: 10px; // Space between input and button
+
     &:hover {
-      background-color: #023e8a;
+      background-color: #283d50;
+      color: aliceblue;
     }
   }
 }
@@ -48,62 +56,82 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 50px; // Increase if needed to space out from search bar
   min-height: 70vh;
-  background-image: linear-gradient(to bottom, #9393ff2b, #e05ee92b);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 15px 20px -7px;
+  background: #283d50;
+  opacity: 0.9;
+  border-radius: 40px;
+  color: aliceblue;
+  box-shadow: rgba(0.5, 0.5, 0.5, 0.5) 0px 15px 20px -7px;
   h4 {
     font-weight: 700;
-  }
-}
+    color:  wheat;
 
-.details {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 30px 0;
-}
-
-.hotel-container {
-  height: 500px;
-  background-color: aliceblue;
-  padding: 30px;
-  // overflow: auto;
-  border-radius: 20px;
-  // margin: 30px;
-}
-.real {
-  height: 410px;
-  overflow: auto;
-}
-
-.weather {
-  display: flex;
-  flex-direction: column;
-  min-height: 500px;
-  width: 350px;
-  background-color: aliceblue;
-  border-radius: 20px;
-  padding: 25px;
-  text-align: center;
-  p {
-    margin-bottom: 0;
-  }
-  .card {
-    margin: 15px 0;
-    // padding: 10px 0;
-    background-image: linear-gradient(to bottom, #9393ff2b, #e05ee92b);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 15px 20px -7px;
-    border: none;
-  }
-  .card:hover {
-    cursor: pointer;
-    background-image: linear-gradient(to bottom, #9393ffb0, #e05ee9aa);
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
-      rgba(0, 0, 0, 0.05) 0px 5px 10px;
   }
 }
 
 .bucket {
-  margin: 20px 0 0;
+  margin: 30px auto;
+  background-color: wheat;
+    color: #283d50;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    &:hover {
+      background-color: #283d50;
+      color: aliceblue;
+    } // Center the bucket list button and add spacing
+}
+
+.itinerary-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #283d50;
+  opacity: 0.7;
+  // background: linear-gradient(180deg, rgba(64,121,179,1) 0%, rgba(233,238,246,1) 88%, rgba(233,241,250,1) 2%);
+  border-radius: 40px;
+  box-shadow: rgba(0.5, 0.5, 0.5, 0.5) 0px 15px 20px -7px;
+  width: 80%;
+  margin: 30px auto; // Additional margin for spacing
+  &:hover {
+    background: #283d50;
+    opacity: 0.9;
+  }
+
+  h3 {
+    color: aliceblue;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: transparent;
+    border-radius: 10px;
+    color: white;
+  
+
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: wheat;
+    color: #283d50;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: white;
+      color: #283d50;
+    }
+  }
 }

@@ -34,8 +34,7 @@ const Home = () => {
           <div className="title">
             <h1>Travel to Explore</h1>
             <p>
-              Still round the corner, there may wait, a new road or a secret
-              gate !
+              Beyond the horizon awaits a new adventure!
             </p>
           </div>
           <div className="search">
