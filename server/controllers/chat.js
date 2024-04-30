@@ -1,5 +1,6 @@
 const Message = require('../model/Message');
 
+// Send a new message
 const sendMessage = async (req, res) => {
   try {
     const { senderId, recipientId, text } = req.body;
@@ -10,6 +11,7 @@ const sendMessage = async (req, res) => {
   }
 };
 
+// Retrieve messages for a specific conversation
 const getMessages = async (req, res) => {
   try {
     const { senderId, recipientId } = req.query;
@@ -22,4 +24,12 @@ const getMessages = async (req, res) => {
   }
 };
 
-module.exports = { sendMessage, getMessages };
+// Retrieve messages for a specific user (Mock function to simulate fetching user-specific messages)
+const getMessagesForUser = async (req, res) => {
+    const { userId } = req.params;
+    // Mock data: In a real application, you would replace this with a database query
+    const messages = [{id: 1, from: userId, message: "Hello"}];
+    res.json(messages);
+};
+
+module.exports = { sendMessage, getMessages, getMessagesForUser };

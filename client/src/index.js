@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <App /> {/* App now includes UserContextProvider and Router */}
     </Provider>
   </React.StrictMode>
 );

@@ -52,36 +52,28 @@ const Navbar = () => {
               Places
             </Link>
             {user && (
-              <Link
-                to="/profile"
-                className="nav-item nav-link text-uppercase mx-1"
-              >
-                PROFILE
-              </Link>
+              <>
+                <Link to="/messages" className="nav-item nav-link text-uppercase mx-1">
+                  Messages
+                </Link>
+                <Link to="/profile" className="nav-item nav-link text-uppercase mx-1">
+                  PROFILE
+                </Link>
+              </>
             )}
           </div>
           <div className="navbar-nav">
             {!user ? (
               <>
-                <Link
-                  to="/login"
-                  className="nav-item nav-link text-uppercase mx-1"
-                >
+                <Link to="/login" className="nav-item nav-link text-uppercase mx-1">
                   LOGIN
                 </Link>
-                <Link
-                  to="/register"
-                  className="nav-item nav-link text-uppercase mx-1"
-                >
+                <Link to="/register" className="nav-item nav-link text-uppercase mx-1">
                   REGISTER
                 </Link>
               </>
             ) : (
-              <Link
-                to="/"
-                className="nav-item nav-link text-uppercase mx-1"
-                onClick={handleLogout}
-              >
+              <Link to="/" className="nav-item nav-link text-uppercase mx-1" onClick={handleLogout}>
                 LOGOUT
               </Link>
             )}

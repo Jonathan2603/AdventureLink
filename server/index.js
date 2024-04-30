@@ -32,43 +32,39 @@ app.use("/api/bucketList", bucketListRoutes);
 app.use("/api/itinerary", itineraryRoutes);
 app.use('/api/chat', chatRoutes);
 
+// WebSocket setup
+const wss = new ws.Server({ noServer: true });
+const onlineUsers = new Map(); // Store online users
+
 app.on('upgrade', (req, socket, head) => {
-  const token = req.headers.cookie?.split(';').find(c => c.trim().startsWith('token='))?.split('=')[1];
-  
-  if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) {
-        socket.destroy();
-        return;
-      }
-      req.user = decoded;
-      wss.handleUpgrade(req, socket, head, (ws) => {
-        wss.emit('connection', ws, req);
+  if (req.url === '/ws') {  // Listen for WebSocket connections only on /ws path
+    const token = req.headers.cookie?.split(';').find(c => c.trim().startsWith('token='))?.split('=')[1];
+    if (token) {
+      jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+          socket.destroy();
+          return;
+        }
+        req.user = decoded;
+        wss.handleUpgrade(req, socket, head, (ws) => {
+          wss.emit('connection', ws, req);
+        });
       });
-    });
+    } else {
+      socket.destroy();
+    }
   } else {
-    socket.destroy();
+    socket.destroy();  // Destroy any non-WebSocket upgrade requests
   }
 });
 
-// WebSocket setup
-const wss = new ws.Server({ noServer: true });
-
-app.use('/uploads', express.static(__dirname + '/uploads'));
-
 wss.on('connection', function(socket, req) {
-  const token = req.headers.cookie.split(';').find(c => c.trim().startsWith('token=')).split('=')[1];
-  if (token) {
-    try {
-      const verified = jwt.verify(token, process.env.JWT_SECRET);
-      socket.userId = verified.id;
-      onlineUsers.set(socket.userId, socket);
-      broadcastToAll({ type: 'online-users', users: Array.from(onlineUsers.keys()) });
-    } catch (error) {
-      console.error('Failed to authenticate:', error);
-      socket.close();
-    }
-  }
+  socket.userId = req.user.id;
+  onlineUsers.set(socket.userId, socket);
+
+  // Broadcast new user online status to all users
+  const onlineUserIds = Array.from(onlineUsers.keys());
+  broadcastToAll({ type: 'online-users', users: onlineUserIds });
 
   socket.on('message', async function(message) {
     const messageData = JSON.parse(message);
@@ -95,19 +91,18 @@ wss.on('connection', function(socket, req) {
     await newMessage.save();
 
     // Broadcast message to recipient
-    wss.clients.forEach(client => {
-      if (client.readyState === ws.OPEN && client.userId === recipient) {
-        client.send(JSON.stringify({ sender: socket.userId, text, file: filename }));
-      }
-    });
+    if (onlineUsers.has(recipient)) {
+      onlineUsers.get(recipient).send(JSON.stringify({ sender: socket.userId, text, file: filename }));
+    }
   });
 
   socket.on('close', () => {
+    onlineUsers.delete(socket.userId);
+    const onlineUserIds = Array.from(onlineUsers.keys());
+    broadcastToAll({ type: 'online-users', users: onlineUserIds });
     console.log(`Connection closed: ${socket.userId}`);
   });
 });
-
-const onlineUsers = new Map();
 
 function broadcastToAll(data) {
   wss.clients.forEach(client => {
@@ -117,10 +112,10 @@ function broadcastToAll(data) {
   });
 }
 
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 // Server Frontend
 app.use(express.static(path.join(__dirname, "../client/build")));
-
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../", "client", "build", "index.html"));
 });

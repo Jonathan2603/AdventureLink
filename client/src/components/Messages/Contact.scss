@@ -1,0 +1,12 @@
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    &.selected {
+        background-color: #f0f0f0;
+    }
+    .username {
+        margin-left: 10px;
+    }
+}
