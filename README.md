@@ -48,13 +48,13 @@ Open http://localhost:3000 in your browser to view the application.
 - User Profiles: Manage personal profiles and track adventures.
 - Social Sharing: Share experiences with friends.
 - Event Scheduling: Schedule and join events.
-- Itinerary Generator: Generate personalized travel plans based on preferences.
+- Itinerary Generator: Generate personalised travel plans based on preferences.
 
 ## Technical Overview
 
 ### User Authentication
 
-User authentication is handled using JWT for secure sessions and bcrypt for password hashing. The backend verifies tokens to ensure authorized access.
+User authentication is handled using JWT for secure sessions and bcrypt for password hashing. The backend verifies tokens to ensure authorised access.
 
 ### Redux State Management
 
@@ -62,11 +62,11 @@ The frontend uses Redux for state management. The userSlice.js handles user auth
 
 ### Itinerary Generation
 
-Users can input travel preferences in ItineraryForm.js. The backend processes this data in itinerary.js, using algorithms to generate customized itineraries.
+Users can input travel preferences in ItineraryForm.js. The backend processes this data in itinerary.js, using algorithms to generate customised itineraries.
 
 ### Backend and Code Structure
 
-The backend endpoints handle requests and send responses utilized by the frontend. Key files include:
+The backend endpoints handle requests and send responses utilised by the frontend. Key files include:
 
 - auth.js: Manages user authentication.
 - itinerary.js: Handles itinerary generation logic.
